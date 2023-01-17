@@ -35,7 +35,7 @@ def task_detail(request, pk):
         return HttpResponse(status=404)
     
     if (request.method == 'PUT'):
-        data = JSONParser.parse(request)
+        data = JSONParser().parse(request)
         serializer = TaskSerializer(task, data=data)
         if not serializer.is_valid():
             return JsonResponse(serializer.errors, status=400)
